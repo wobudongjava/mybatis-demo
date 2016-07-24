@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sunny.mybatis_demo.entity.PhoneNumber;
 import com.sunny.mybatis_demo.entity.Student;
 import com.sunny.mybatis_demo.service.StudentService;
 
@@ -35,19 +36,20 @@ public class StudentServiceTest {
 
 	@Test
 	public void testFindStudentById() {
-		Student student = studentService.findStudentById(1);
+		Student student = studentService.findStudentById(3);
 		Assert.assertNotNull(student);
 		System.out.println(student);
+		System.out.println(student.getPhone().getAsString());
 	}
 
 	@Test
 	public void testCreateStudent() {
 		Student student = new Student();
-		int id = 3;
-		student.setStudId(id);
+		int id = 4;
 		student.setName("student_" + id);
 		student.setEmail("student_" + id + "gmail.com");
 		student.setDob(new Date());
+		student.setPhone(new PhoneNumber("86", "021", "12345678"));
 		studentService.createStudent(student);
 		Student newStudent = studentService.findStudentById(id);
 		Assert.assertNotNull(newStudent);

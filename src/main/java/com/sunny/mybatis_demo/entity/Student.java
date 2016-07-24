@@ -7,6 +7,7 @@ public class Student {
 	private String name;
 	private String email;
 	private Date dob;
+	private PhoneNumber phone;
 
 	public Integer getStudId() {
 		return studId;
@@ -38,6 +39,14 @@ public class Student {
 
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+
+	public PhoneNumber getPhone() {
+		return phone;
+	}
+
+	public void setPhone(PhoneNumber phone) {
+		this.phone = phone;
 	}
 
 }
