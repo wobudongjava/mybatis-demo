@@ -50,4 +50,19 @@
 		<scope>test</scope>
 	</dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<!-- 使用方法：mvn mybatis-generator:generate -->
+  		<plugin>
+  			<groupId>org.mybatis.generator</groupId>
+  			<artifactId>mybatis-generator-maven-plugin</artifactId>
+  			<version>1.3.2</version>
+  			<configuration>
+  				<verbose>true</verbose>
+  				<overwrite>true</overwrite>
+  				<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>

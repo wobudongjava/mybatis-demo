@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- load prop -->
+	<!--
+	    **application.local.properties must include below property keys config**
+		#jdbc config
+		jdbc.driver=com.mysql.jdbc.Driver
+		jdbc.url=jdbc:mysql://172.19.25.44:3306/Tuna-dev?useUnicode=true&characterEncoding=UTF-8
+		jdbc.username=mango
+		jdbc.password=mangoroot
+
+		#for mybatis generator config
+		jdbc.connectionURL=jdbc:mysql://172.19.25.44:3306/Tuna-dev
+		maven.local.repo.dir=E:/.m2/repository
+	 
+	<properties resource="application.local.properties" />-->
+
+	<!-- load driver jar, must config local maven repo dir -->
+	<classPathEntry location="D:\repository\mysql\mysql-connector-java\5.1.22\mysql-connector-java-5.1.22.jar" />
+	
+	<context id="mysql" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<!-- remove comments -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"	connectionURL="jdbc:mysql://127.0.0.1:3306/etl_test"
+			 userId="root"  password="123456" />
+			 
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- gem entity -->
+		<javaModelGenerator targetPackage="com.etiaolong.persistence.mybatis.vo" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+
+		<!-- gem xml -->
+		<sqlMapGenerator targetPackage="mybatisMapper"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- gem mapper -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.etiaolong.persistence.mybatis" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+				
+		<table schema="etl_test" tableName="user_borrow_collection" domainObjectName="UserBorrowCollection"
+				enableCountByExample="true" enableSelectByExample="true"
+				enableUpdateByExample="false" enableDeleteByExample="false">
+				<generatedKey column="id" sqlStatement="JDBC" />
+		</table>
+		
+	</context>
+</generatorConfiguration>
